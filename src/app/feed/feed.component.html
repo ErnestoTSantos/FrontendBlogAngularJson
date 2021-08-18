@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <div class="card border-0" style="width: 18rem;">
+        <div class="d-flex justify-content-center">
+          <img src="./../../assets/img/eu_surf.jpeg" class="card-img-top rounded-circle w-75" alt="Imagem-Usuário">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title text-center">Ernesto Santos</h5>
+          <p class="card-text">Treinando para ser um dev Fullstack</p>
+          <a href="https://github.com/ErnestoTSantos" target="_blank" class="btn btn-outline-dark d-flex justify-content-center">
+            Github <fa-icon [icon]=faGithub class="ms-1"></fa-icon>
+          </a>
+
+          <hr class="mt-4 mb-4">
+          <h6 class="mb-3 text-monospace text-center">Pesquisar por nome</h6>
+          <input [(ngModel)]="filter" type="text" class="form-control mb-3 w-100" placeholder="Digite o nome aqui...">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div *ngIf="post">
+        <h3 class="text-center mb-4 text-monospace">Deixe abaixo seus comentários:</h3>
+        <div class="form-group mb-3">
+          <label for="name" class="text-monospace mb-1">Nome:</label>
+          <input [(ngModel)]="post.name" type="text" name="name" id="name" class="form-control" placeholder="Digite seu nome...">
+        </div>
+        <div class="form-group mb-2">
+          <label for="message" class="text-monospace mb-1">Mensagem: </label>
+          <textarea [(ngModel)]="post.message" name="message" id="message" cols="30" rows="4" class="form-control" placeholder="Digite aqui sua mensagem..."></textarea>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button (click)="saveMessage()" type="button" class="btn btn-outline-info w-25">Publicar</button>
+        </div>
+      </div>
+
+      <hr class="mt-5 mb-5">
+
+      <h3 class="text-center mb-5 text-monospace">Comentários adicionados</h3>
+
+      <div class="container">
+        <div class="card mb-4" *ngFor="let post of filteredPost">
+          <div class="card-header">
+            <h5 class="card-title d-flex justify-content-center">{{ post.id }}</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{ post.name }}</p>
+            <p class="card-text">{{ post.message }}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
